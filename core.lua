@@ -1,9 +1,20 @@
 if GetLocale() ~= "deDE" then return end -- only for the German client..
 
 local ADDONNAME = ...
+local Print do
+    local addonDisplayName = GetAddOnMetadata(ADDONNAME, "Title")
+
+    Print = function(...)
+        print(string.format("|cFF3399FF%s|r: %s", addonDisplayName, tostringall(...)))
+    end
+end
 
 -- Used in the Level up display when entering new floor
-JAILERS_TOWER_SCENARIO_FLOOR = "Flur %d"
+if JAILERS_TOWER_SCENARIO_FLOOR:find("Ebene") then
+    JAILERS_TOWER_SCENARIO_FLOOR = "Flur %d"
+else
+    Print("Blizzard(LOCALE) Übersetzt 'Floor' nicht mehr als 'Ebene'.")
+end
 
 -- Change the floor text in the ObjectTracker widget for Torghast
 if IsAddOnLoaded("Blizzard_UIWidgets") then
@@ -20,16 +31,12 @@ if IsAddOnLoaded("Blizzard_UIWidgets") then
                     widgetInfo.headerText = headerText:gsub("Ebene", "Flur")
                 elseif not isFixed then
                     isFixed = true
-                    local addonDisplayName = GetAddOnMetadata(ADDONNAME, "Title")
-                    print(string.format("|cFF3399FF%s|r: %s",
-                        addonDisplayName, "Blizzard Übersetzt 'Floor' nicht mehr als 'Ebene'."
-                    ))
+                    Print("Blizzard(Widget) Übersetzt 'Floor' nicht mehr als 'Ebene'.")
                 end
             end
         end
         return widgetInfo
     end
 else
-    local addonDisplayName = GetAddOnMetadata(ADDONNAME, "Title")
-    print(string.format("|cFF3399FF%s|r: %s", addonDisplayName, "Blizzard_UIWidgets wurde nicht geladen.."))
+    Print("Blizzard_UIWidgets wurde nicht geladen..")
 end
