@@ -1,0 +1,10 @@
+## Interface: 90002
+## Title: Torghast: Floor name fix
+## Notes: Changes the german floor name to floor instead of layer
+## Title-deDE: Torghast: Flur name fix
+## Notes-deDE: Ändert denn Flur name von Ebene zu Flur
+## Version: 1.0.1
+## Author: Areko
+## LoadWith: Blizzard_UIWidgets
+
+core.lua
