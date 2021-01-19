@@ -1,12 +1,8 @@
 if GetLocale() ~= "deDE" then return end -- only for the German client..
 
 local ADDONNAME = ...
-local Print do
-    local addonDisplayName = GetAddOnMetadata(ADDONNAME, "Title")
-
-    Print = function(...)
-        print(string.format("|cFF3399FF%s|r: %s", addonDisplayName, tostringall(...)))
-    end
+local function Print(...)
+    print(string.format("|cFF3399FF%s|r: %s", ADDONNAME, tostringall(...)))
 end
 
 -- Used in the Level up display when entering new floor
