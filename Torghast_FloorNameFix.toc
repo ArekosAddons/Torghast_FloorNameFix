@@ -1,4 +1,4 @@
-## Interface: 90002
+## Interface: 90005
 ## Title: Torghast: Floor name fix
 ## Notes: Changes the german floor name to floor instead of layer
 ## Title-deDE: Torghast: Flur name fix

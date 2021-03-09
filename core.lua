@@ -1,4 +1,5 @@
 if GetLocale() ~= "deDE" then return end -- only for the German client..
+if select(4, GetBuildInfo()) >= 90005 then return end -- Blizzard fixed it with 9.0.5
 
 local ADDONNAME = ...
 local function Print(...)
